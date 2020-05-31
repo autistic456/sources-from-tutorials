@@ -14,13 +14,15 @@ node_t *push(node_t *, node_t **);
 node_t *find(node_t *, int);
 node_t *unshift(node_t*,node_t*);
 node_t *pop(node_t**);
+node_t *shift(node_t*);
 
 int main(void){
 	node_t *h = 0;
 		
-	for(int i =0; i<23 ; i++)
+	for(int i =0; i<2 ; i++)
 		push(create(i+1),&h);
 
+	printf("%i\n",shift(h)->value);
 	printlist(h);
 
 }
@@ -59,4 +61,15 @@ node_t *pop(node_t **head){
 	*head = (*head)->next;
 	return tmp;
 }
+node_t *shift(node_t *head){
+	if(!head || !head->next){
+		printf("command has less then 2 nodes\n");
+		return (node_t*)-1;
+	}
 
+	node_t *tmp = head;
+	for(;tmp && tmp->next && tmp->next->next; tmp=tmp->next);
+	node_t *last = tmp->next;
+	tmp->next = 0;
+	return last;
+}

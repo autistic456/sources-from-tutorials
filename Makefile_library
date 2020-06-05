@@ -1,11 +1,11 @@
 BIN=normal_exe liba.so dynamic_exe liba.a static_exe
 all: $(BIN)
 
-liba.o: a.c a.h
-	cc -c -o $@ a.c
+liba.o: libraryExample.c libraryExample.h
+	cc -c -o $@ libraryExample.c
 
-liba.so: a.c a.h
-	cc -fPIC -shared -o $@ a.c -lc
+liba.so: libraryExample.c libraryExample.h
+	cc -fPIC -shared -o $@ libraryExample.c -lc
 
 liba.a: liba.o
 	ar crs $@ $^	

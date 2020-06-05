@@ -1,4 +1,4 @@
-#include "a.h"
+#include "libraryExample.h"
 #include <string.h>
 char *reverse(char *string){
 	int len = strlen(string);
